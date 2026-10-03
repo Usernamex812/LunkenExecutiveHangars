@@ -38,13 +38,35 @@
       width: 58px;
       height: 58px;
       border: 3px solid #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .logo-l {
+      position: absolute;
+      left: 8px;
+      top: 8px;
       font-size: 25px;
       font-weight: bold;
-      letter-spacing: -7px;
-      padding-right: 7px;
+      line-height: 1;
+    }
+
+    .logo-e {
+      position: absolute;
+      left: 20px;
+      top: 17px;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .logo-h {
+      position: absolute;
+      right: 7px;
+      bottom: 6px;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 1;
     }
 
     .company-name {
@@ -68,6 +90,12 @@
 
     nav a:hover {
       text-decoration: underline;
+    }
+
+    .settings-icon {
+      font-size: 21px;
+      text-decoration: none;
+      line-height: 1;
     }
 
     .hero {
@@ -95,12 +123,6 @@
       margin: 0;
       font-weight: 800;
       letter-spacing: 3px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      margin-top: 20px;
-      letter-spacing: 1px;
     }
 
     body.dark-mode {
@@ -165,7 +187,12 @@
 
 <header>
   <div class="brand">
-    <div class="logo">L E H</div>
+    <div class="logo">
+      <span class="logo-l">L</span>
+      <span class="logo-e">E</span>
+      <span class="logo-h">H</span>
+    </div>
+
     <div class="company-name">LUNKEN EXECUTIVE HANGARS</div>
   </div>
 
@@ -175,7 +202,7 @@
     <a href="../mission/">Mission</a>
     <a href="../contact/">Contact</a>
     <a href="../help/">Help</a>
-    <a href="../settings/">Settings</a>
+    <a href="../settings/" class="settings-icon" title="Settings">⚙</a>
     <a href="../account/">Account</a>
   </nav>
 </header>
@@ -183,14 +210,11 @@
 <section class="hero">
   <div class="hero-content">
     <h1>LUNKEN EXECUTIVE HANGARS</h1>
-    <p>Premium aviation facilities at Lunken Airport.</p>
   </div>
 </section>
 
 <script>
-  const darkMode = localStorage.getItem("darkMode") === "true";
-
-  if (darkMode) {
+  if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark-mode");
   }
 </script>
