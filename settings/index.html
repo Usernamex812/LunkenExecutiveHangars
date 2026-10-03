@@ -20,10 +20,6 @@
             min-height: 100vh;
         }
 
-        /* =========================
-           TOP BAR
-        ========================= */
-
         .navbar {
             height: 105px;
             background: white;
@@ -37,10 +33,6 @@
             border-bottom: 1px solid black;
         }
 
-        /* =========================
-           LOGO
-        ========================= */
-
         .logo {
             display: flex;
             align-items: center;
@@ -49,6 +41,7 @@
             font-size: 22px;
             font-weight: bold;
             color: black;
+            text-decoration: none;
         }
 
         .logo-mark {
@@ -74,10 +67,6 @@
             margin-left: 9px;
         }
 
-        /* =========================
-           BACK BUTTON
-        ========================= */
-
         .back-button {
             text-decoration: none;
             color: black;
@@ -92,10 +81,6 @@
         .back-button:hover {
             opacity: 0.5;
         }
-
-        /* =========================
-           SETTINGS CONTENT
-        ========================= */
 
         .settings-page {
             width: 90%;
@@ -123,20 +108,30 @@
             border-bottom: 1px solid #cccccc;
         }
 
+        .setting-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
         .setting-name {
             font-size: 20px;
             font-weight: 600;
         }
 
-        /* =========================
-           TOGGLE
-        ========================= */
+        .setting-description {
+            font-size: 15px;
+            color: #666666;
+        }
 
         .switch {
             position: relative;
 
             width: 54px;
             height: 30px;
+
+            flex-shrink: 0;
+            margin-left: 30px;
         }
 
         .switch input {
@@ -184,10 +179,6 @@
             transform: translateX(24px);
         }
 
-        /* =========================
-           DARK MODE
-        ========================= */
-
         body.dark {
             background: #111111;
             color: white;
@@ -216,6 +207,10 @@
             border-bottom-color: #444444;
         }
 
+        body.dark .setting-description {
+            color: #aaaaaa;
+        }
+
         body.dark .slider {
             background: #555555;
         }
@@ -227,10 +222,6 @@
         body.dark input:checked + .slider::before {
             background: #111111;
         }
-
-        /* =========================
-           MOBILE
-        ========================= */
 
         @media (max-width: 650px) {
 
@@ -251,17 +242,19 @@
             .settings-title {
                 font-size: 38px;
             }
+
+            .setting-description {
+                max-width: 230px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- TOP BAR -->
-
     <header class="navbar">
 
-        <div class="logo">
+        <a href="../home/" class="logo">
 
             <div class="logo-mark">
                 <div>L</div>
@@ -271,9 +264,7 @@
 
             <span>Lunken Executive Hangars</span>
 
-        </div>
-
-        <!-- BACK TO HOME -->
+        </a>
 
         <a
             href="../home/"
@@ -286,19 +277,28 @@
     </header>
 
 
-    <!-- SETTINGS -->
-
     <main class="settings-page">
 
         <h1 class="settings-title">
             Settings
         </h1>
 
+
+        <!-- DARK MODE -->
+
         <div class="setting">
 
-            <span class="setting-name">
-                Dark Mode
-            </span>
+            <div class="setting-info">
+
+                <span class="setting-name">
+                    Dark Mode
+                </span>
+
+                <span class="setting-description">
+                    Use a dark appearance across the website.
+                </span>
+
+            </div>
 
             <label class="switch">
 
@@ -313,23 +313,62 @@
 
         </div>
 
+
+        <!-- RUDE MODE -->
+
+        <div class="setting">
+
+            <div class="setting-info">
+
+                <span class="setting-name">
+                    Rude Mode
+                </span>
+
+                <span class="setting-description">
+                    Changes the Help page into something a little less helpful.
+                </span>
+
+            </div>
+
+            <label class="switch">
+
+                <input
+                    type="checkbox"
+                    id="rudeModeToggle"
+                >
+
+                <span class="slider"></span>
+
+            </label>
+
+        </div>
+
     </main>
 
 
-    <!-- DARK MODE SCRIPT -->
-
     <script>
 
-        const toggle = document.getElementById("darkModeToggle");
+        const darkModeToggle =
+            document.getElementById("darkModeToggle");
+
+        const rudeModeToggle =
+            document.getElementById("rudeModeToggle");
+
+
+        /* DARK MODE */
 
         if (localStorage.getItem("darkMode") === "true") {
+
             document.body.classList.add("dark");
-            toggle.checked = true;
+
+            darkModeToggle.checked = true;
+
         }
 
-        toggle.addEventListener("change", function () {
 
-            if (toggle.checked) {
+        darkModeToggle.addEventListener("change", function() {
+
+            if (darkModeToggle.checked) {
 
                 document.body.classList.add("dark");
 
@@ -340,6 +379,30 @@
                 document.body.classList.remove("dark");
 
                 localStorage.setItem("darkMode", "false");
+
+            }
+
+        });
+
+
+        /* RUDE MODE */
+
+        if (localStorage.getItem("rudeMode") === "true") {
+
+            rudeModeToggle.checked = true;
+
+        }
+
+
+        rudeModeToggle.addEventListener("change", function() {
+
+            if (rudeModeToggle.checked) {
+
+                localStorage.setItem("rudeMode", "true");
+
+            } else {
+
+                localStorage.setItem("rudeMode", "false");
 
             }
 
