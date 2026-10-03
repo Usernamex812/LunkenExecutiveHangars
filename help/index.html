@@ -1,496 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Help — Lunken Executive Hangars</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: white;
-            color: black;
-            min-height: 100vh;
-        }
-
-        .navbar {
-            height: 105px;
-            background: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 50px;
-
-            border-bottom: 1px solid black;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-
-            font-size: 22px;
-            font-weight: bold;
-            color: black;
-            text-decoration: none;
-        }
-
-        .logo-mark {
-            width: 48px;
-            height: 48px;
-
-            background: white;
-            color: black;
-
-            border: 2px solid black;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 12px;
-            font-weight: bold;
-            line-height: 12px;
-        }
-
-        .logo-mark .e {
-            margin-left: 9px;
-        }
-
-        .back-button {
-            text-decoration: none;
-            color: black;
-
-            font-size: 38px;
-            font-weight: 300;
-            line-height: 1;
-        }
-
-        .back-button:hover {
-            opacity: 0.5;
-        }
-
-
-        /* NORMAL HELP PAGE */
-
-        .normal-help {
-            width: 90%;
-            max-width: 1100px;
-
-            margin: 0 auto;
-
-            padding: 60px 0;
-        }
-
-        .help-title {
-            font-size: 52px;
-            font-weight: 900;
-
-            margin-bottom: 15px;
-        }
-
-        .help-subtitle {
-            font-size: 19px;
-            color: #555555;
-
-            margin-bottom: 50px;
-        }
-
-        .help-section {
-            border-top: 1px solid #cccccc;
-        }
-
-        .help-item {
-            border-bottom: 1px solid #cccccc;
-        }
-
-        .help-question {
-            width: 100%;
-
-            padding: 24px 5px;
-
-            background: none;
-            border: none;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            text-align: left;
-
-            font-family: Arial, sans-serif;
-            font-size: 20px;
-            font-weight: 600;
-
-            color: black;
-
-            cursor: pointer;
-        }
-
-        .help-question:hover {
-            opacity: 0.6;
-        }
-
-        .arrow {
-            font-size: 25px;
-            font-weight: 300;
-
-            transition: transform 0.2s;
-        }
-
-        .help-item.open .arrow {
-            transform: rotate(90deg);
-        }
-
-        .help-answer {
-            display: none;
-
-            padding: 0 45px 25px 5px;
-
-            font-size: 17px;
-            line-height: 1.6;
-
-            color: #444444;
-        }
-
-        .help-item.open .help-answer {
-            display: block;
-        }
-
-
-        /* RUDE HELP PAGE */
-
-        .rude-help {
-            min-height: calc(100vh - 105px);
-
-            display: none;
-
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            text-align: center;
-
-            padding: 60px 30px;
-        }
-
-        .rude-text {
-            font-size: clamp(42px, 6vw, 86px);
-            font-weight: 900;
-
-            line-height: 1.05;
-            letter-spacing: -0.025em;
-        }
-
-        .rude-help.active {
-            display: flex;
-        }
-
-        .normal-help.hidden {
-            display: none;
-        }
-
-
-        /* DARK MODE */
-
-        body.dark {
-            background: #111111;
-            color: white;
-        }
-
-        body.dark .navbar {
-            background: #111111;
-            border-bottom-color: white;
-        }
-
-        body.dark .logo {
-            color: white;
-        }
-
-        body.dark .logo-mark {
-            background: #111111;
-            color: white;
-            border-color: white;
-        }
-
-        body.dark .back-button {
-            color: white;
-        }
-
-        body.dark .help-subtitle {
-            color: #bbbbbb;
-        }
-
-        body.dark .help-section,
-        body.dark .help-item {
-            border-color: #444444;
-        }
-
-        body.dark .help-question {
-            color: white;
-        }
-
-        body.dark .help-answer {
-            color: #cccccc;
-        }
-
-
-        /* MOBILE */
-
-        @media (max-width: 650px) {
-
-            .navbar {
-                height: 90px;
-                padding: 0 20px;
-            }
-
-            .logo span {
-                display: none;
-            }
-
-            .normal-help {
-                width: 88%;
-                padding-top: 40px;
-            }
-
-            .help-title {
-                font-size: 40px;
-            }
-
-            .help-subtitle {
-                font-size: 17px;
-            }
-
-            .help-question {
-                font-size: 18px;
-            }
-
-            .help-answer {
-                font-size: 16px;
-            }
-
-            .rude-help {
-                min-height: calc(100vh - 90px);
-                padding: 40px 20px;
-            }
-
-            .rude-text {
-                font-size: clamp(34px, 10vw, 60px);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help | Lunken Executive Hangars</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #111;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    header {
+      height: 105px;
+      border-bottom: 2px solid #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 45px;
+      background: #fff;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border: 3px solid #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: -7px;
+      padding-right: 7px;
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #111;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 70px 25px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin: 0 0 40px;
+    }
+
+    .faq {
+      border-top: 1px solid #ccc;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #ccc;
+    }
+
+    .question {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      padding: 24px 0;
+      text-align: left;
+      font-size: 19px;
+      font-weight: bold;
+      color: inherit;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .answer {
+      display: none;
+      padding: 0 0 25px;
+      color: #555;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .answer.open {
+      display: block;
+    }
+
+    .plus {
+      font-size: 25px;
+      font-weight: normal;
+    }
+
+    #rudeModeMessage {
+      display: none;
+      min-height: 60vh;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    #rudeModeMessage .line1 {
+      font-size: clamp(42px, 7vw, 90px);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    #rudeModeMessage .line2 {
+      font-size: clamp(32px, 5vw, 65px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-top: 20px;
+    }
+
+    body.dark-mode {
+      background: #111;
+      color: #eee;
+    }
+
+    body.dark-mode header {
+      background: #111;
+      border-color: #eee;
+    }
+
+    body.dark-mode nav a {
+      color: #eee;
+    }
+
+    body.dark-mode .answer {
+      color: #aaa;
+    }
+
+    body.dark-mode .faq,
+    body.dark-mode .faq-item {
+      border-color: #444;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 0 20px;
+      }
+
+      .company-name {
+        display: none;
+      }
+
+      nav {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        height: auto;
+        min-height: 85px;
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      main {
+        padding: 45px 20px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header class="navbar">
+<header>
+  <div class="brand">
+    <div class="logo">L E H</div>
+    <div class="company-name">LUNKEN EXECUTIVE HANGARS</div>
+  </div>
 
-        <a href="../home/" class="logo">
+  <nav>
+    <a href="../home/">Home</a>
+    <a href="../products/">Products</a>
+    <a href="../mission/">Mission</a>
+    <a href="../contact/">Contact</a>
+    <a href="../help/">Help</a>
+    <a href="../settings/">Settings</a>
+    <a href="../account/">Account</a>
+  </nav>
+</header>
 
-            <div class="logo-mark">
-                <div>L</div>
-                <div class="e">E</div>
-                <div>H</div>
-            </div>
+<main>
 
-            <span>Lunken Executive Hangars</span>
+  <div id="normalHelp">
+    <h1>Help</h1>
 
-        </a>
+    <div class="faq">
 
-        <a
-            href="../home/"
-            class="back-button"
-            aria-label="Back to Home"
-        >
-            ←
-        </a>
-
-    </header>
-
-
-    <!-- NORMAL HELP -->
-
-    <main class="normal-help" id="normalHelp">
-
-        <h1 class="help-title">
-            Help
-        </h1>
-
-        <p class="help-subtitle">
-            Find answers to common questions about Lunken Executive Hangars.
-        </p>
-
-        <section class="help-section">
-
-
-            <div class="help-item">
-
-                <button class="help-question">
-                    <span>What is Lunken Executive Hangars?</span>
-                    <span class="arrow">→</span>
-                </button>
-
-                <div class="help-answer">
-                    Lunken Executive Hangars is an aviation-focused company
-                    providing executive hangar solutions at Cincinnati
-                    Municipal Airport – Lunken Field.
-                </div>
-
-            </div>
-
-
-            <div class="help-item">
-
-                <button class="help-question">
-                    <span>Where are the hangars located?</span>
-                    <span class="arrow">→</span>
-                </button>
-
-                <div class="help-answer">
-                    Our hangar facilities are planned around the Lunken
-                    Airport area in Cincinnati, Ohio.
-                </div>
-
-            </div>
-
-
-            <div class="help-item">
-
-                <button class="help-question">
-                    <span>What aircraft can the hangars accommodate?</span>
-                    <span class="arrow">→</span>
-                </button>
-
-                <div class="help-answer">
-                    Aircraft accommodations depend on the specific hangar
-                    and available space.
-                </div>
-
-            </div>
-
-
-            <div class="help-item">
-
-                <button class="help-question">
-                    <span>How can I contact Lunken Executive Hangars?</span>
-                    <span class="arrow">→</span>
-                </button>
-
-                <div class="help-answer">
-                    Visit the Contact Us page for our contact information
-                    and available ways to reach our team.
-                </div>
-
-            </div>
-
-
-            <div class="help-item">
-
-                <button class="help-question">
-                    <span>Where can I find information about available hangars?</span>
-                    <span class="arrow">→</span>
-                </button>
-
-                <div class="help-answer">
-                    Information about our hangar products and options will
-                    be available on the Our Products page.
-                </div>
-
-            </div>
-
-
-            <div class="help-item">
-
-                <button class="help-question">
-                    <span>How do I change the website appearance?</span>
-                    <span class="arrow">→</span>
-                </button>
-
-                <div class="help-answer">
-                    Open Settings using the gear icon in the top navigation
-                    bar. From there, you can turn Dark Mode on or off.
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- RUDE MODE -->
-
-    <main class="rude-help" id="rudeHelp">
-
-        <div class="rude-text">
-            The helping hand you seek
+      <div class="faq-item">
+        <button class="question">
+          What is Lunken Executive Hangars?
+          <span class="plus">+</span>
+        </button>
+        <div class="answer">
+          Lunken Executive Hangars provides premium aviation hangar
+          facilities and services at Cincinnati Municipal Airport –
+          Lunken Field.
         </div>
+      </div>
 
-        <div class="rude-text" style="margin-top: 40px;">
-            Is at the end of your arm.
+      <div class="faq-item">
+        <button class="question">
+          Where are the hangars located?
+          <span class="plus">+</span>
+        </button>
+        <div class="answer">
+          Our facilities are located at Cincinnati Municipal Airport –
+          Lunken Field.
         </div>
+      </div>
 
-    </main>
+      <div class="faq-item">
+        <button class="question">
+          How can I contact Lunken Executive Hangars?
+          <span class="plus">+</span>
+        </button>
+        <div class="answer">
+          Contact information and additional company information will
+          be available through the Contact section of the website.
+        </div>
+      </div>
 
+      <div class="faq-item">
+        <button class="question">
+          How do I change website settings?
+          <span class="plus">+</span>
+        </button>
+        <div class="answer">
+          Open the Settings page to change options such as Dark Mode
+          and Rude Mode.
+        </div>
+      </div>
 
-    <script>
+    </div>
+  </div>
 
-        /* FAQ ACCORDION */
+  <div id="rudeModeMessage">
+    <div class="line1">The helping hand you seek</div>
+    <div class="line2">Is at the end of your arm.</div>
+  </div>
 
-        const helpItems =
-            document.querySelectorAll(".help-item");
+</main>
 
-        helpItems.forEach(function(item) {
+<script>
+  // Dark Mode
+  if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+  }
 
-            const question =
-                item.querySelector(".help-question");
+  // Rude Mode
+  const rudeMode =
+    localStorage.getItem("rudeMode") === "true";
 
-            question.addEventListener("click", function() {
+  const normalHelp =
+    document.getElementById("normalHelp");
 
-                item.classList.toggle("open");
+  const rudeMessage =
+    document.getElementById("rudeModeMessage");
 
-            });
+  if (rudeMode) {
+    normalHelp.style.display = "none";
+    rudeMessage.style.display = "flex";
+  }
 
-        });
+  // FAQ accordion
+  document.querySelectorAll(".question").forEach(button => {
 
+    button.addEventListener("click", () => {
 
-        /* DARK MODE */
+      const answer =
+        button.nextElementSibling;
 
-        if (localStorage.getItem("darkMode") === "true") {
+      const plus =
+        button.querySelector(".plus");
 
-            document.body.classList.add("dark");
+      const isOpen =
+        answer.classList.contains("open");
 
-        }
+      answer.classList.toggle("open", !isOpen);
 
+      plus.textContent =
+        isOpen ? "+" : "−";
 
-        /* RUDE MODE */
+    });
 
-        const normalHelp =
-            document.getElementById("normalHelp");
-
-        const rudeHelp =
-            document.getElementById("rudeHelp");
-
-
-        if (localStorage.getItem("rudeMode") === "true") {
-
-            normalHelp.classList.add("hidden");
-
-            rudeHelp.classList.add("active");
-
-        }
-
-    </script>
+  });
+</script>
 
 </body>
 </html>
