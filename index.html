@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Lunken Executive Hangars</title>
 
     <style>
@@ -19,7 +20,7 @@
         }
 
         /* =========================
-           TOP BAR
+           NAVBAR
         ========================= */
 
         .navbar {
@@ -32,16 +33,13 @@
             border-bottom: 1px solid black;
         }
 
-        /* =========================
-           LOGO
-        ========================= */
-
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
             font-size: 22px;
             font-weight: bold;
+            color: black;
         }
 
         .logo-mark {
@@ -50,10 +48,12 @@
             background: white;
             color: black;
             border: 2px solid black;
+
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
             font-size: 11px;
             font-weight: bold;
             line-height: 11px;
@@ -62,10 +62,6 @@
         .logo-mark .e {
             margin-left: 8px;
         }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
 
         .right-side {
             display: flex;
@@ -90,10 +86,6 @@
             opacity: 0.5;
         }
 
-        /* =========================
-           SETTINGS
-        ========================= */
-
         .settings {
             text-decoration: none;
             color: black;
@@ -110,18 +102,29 @@
         ========================= */
 
         .hero {
+            width: 92%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 55px 0 60px;
+        }
+
+        .hero-title {
             width: 100%;
-            padding: 45px 50px;
-            display: flex;
-            justify-content: center;
-            background: white;
+            text-align: center;
+
+            font-size: clamp(28px, 5vw, 72px);
+            font-weight: 900;
+            letter-spacing: 0.025em;
+            line-height: 1;
+
+            white-space: nowrap;
+
+            margin-bottom: 35px;
         }
 
         .hero-image {
-            width: 85%;
-            max-width: 1500px;
-            height: 500px;
-            object-fit: cover;
+            width: 100%;
+            height: auto;
             display: block;
         }
 
@@ -154,15 +157,53 @@
             color: white;
         }
 
-        body.dark .hero {
-            background: #111111;
+        body.dark .hero-title {
+            color: white;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .logo span {
+                display: none;
+            }
+
+            .right-side {
+                gap: 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .hero {
+                width: 94%;
+                padding-top: 40px;
+            }
+
+            .hero-title {
+                font-size: clamp(22px, 6vw, 40px);
+                margin-bottom: 25px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- TOP BAR -->
+    <!-- NAVIGATION -->
+
     <header class="navbar">
 
         <div class="logo">
@@ -195,19 +236,25 @@
     </header>
 
 
-    <!-- MAIN IMAGE -->
+    <!-- HERO -->
+
     <main class="hero">
+
+        <h1 class="hero-title">
+            LUNKEN EXECUTIVE HANGARS
+        </h1>
 
         <img
             class="hero-image"
-            src="https://commons.wikimedia.org/wiki/Special:FilePath/Embraer_Phenom_300E_exterior.jpg"
-            alt="Embraer Phenom 300E"
+            src="https://resources.globalair.com/images/article/phenom-300e-1.jpg"
+            alt="Embraer Phenom 300E flying over the water"
         >
 
     </main>
 
 
-    <!-- LOAD SAVED DARK MODE -->
+    <!-- DARK MODE -->
+
     <script>
         if (localStorage.getItem("darkMode") === "true") {
             document.body.classList.add("dark");
