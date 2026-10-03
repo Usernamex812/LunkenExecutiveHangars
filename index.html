@@ -20,33 +20,43 @@
         }
 
         /* =========================
-           NAVBAR
+           TOP BAR
         ========================= */
 
         .navbar {
-            height: 80px;
+            height: 105px;
             background: white;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 0 50px;
+
             border-bottom: 1px solid black;
         }
+
+        /* =========================
+           LOGO
+        ========================= */
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
+
             font-size: 22px;
             font-weight: bold;
             color: black;
         }
 
         .logo-mark {
-            width: 42px;
-            height: 42px;
+            width: 48px;
+            height: 48px;
+
             background: white;
             color: black;
+
             border: 2px solid black;
 
             display: flex;
@@ -54,43 +64,99 @@
             align-items: center;
             justify-content: center;
 
-            font-size: 11px;
+            font-size: 12px;
             font-weight: bold;
-            line-height: 11px;
+            line-height: 12px;
         }
 
         .logo-mark .e {
-            margin-left: 8px;
+            margin-left: 9px;
         }
 
+        /* =========================
+           RIGHT NAVIGATION
+        ========================= */
+
         .right-side {
+            height: 100%;
+
             display: flex;
             align-items: center;
-            gap: 35px;
         }
 
         .nav-links {
+            height: 100%;
+
             display: flex;
-            gap: 35px;
+            align-items: center;
+
             list-style: none;
+        }
+
+        .nav-links li {
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+        }
+
+        /* Divider lines */
+
+        .nav-links li + li::before {
+            content: "";
+
+            position: absolute;
+            left: 0;
+
+            height: 42px;
+
+            width: 1px;
+
+            background: black;
         }
 
         .nav-links a {
             text-decoration: none;
             color: black;
-            font-size: 15px;
+
+            font-size: 18px;
             font-weight: 600;
+
+            padding: 0 28px;
+
+            white-space: nowrap;
+
+            transition: opacity 0.2s;
         }
 
         .nav-links a:hover {
             opacity: 0.5;
         }
 
+        /* =========================
+           SETTINGS
+        ========================= */
+
         .settings {
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+
+            padding-left: 28px;
+            margin-left: 0;
+
+            border-left: 1px solid black;
+
             text-decoration: none;
             color: black;
-            font-size: 25px;
+
+            font-size: 27px;
             line-height: 1;
+
+            transition: opacity 0.2s;
         }
 
         .settings:hover {
@@ -104,16 +170,20 @@
         .hero {
             width: 92%;
             max-width: 1400px;
+
             margin: 0 auto;
+
             padding: 55px 0 60px;
         }
 
         .hero-title {
             width: 100%;
+
             text-align: center;
 
             font-size: clamp(28px, 5vw, 72px);
             font-weight: 900;
+
             letter-spacing: 0.025em;
             line-height: 1;
 
@@ -125,6 +195,7 @@
         .hero-image {
             width: 100%;
             height: auto;
+
             display: block;
         }
 
@@ -157,6 +228,11 @@
             color: white;
         }
 
+        body.dark .nav-links li + li::before,
+        body.dark .settings {
+            border-color: white;
+        }
+
         body.dark .hero-title {
             color: white;
         }
@@ -165,7 +241,7 @@
            MOBILE
         ========================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 850px) {
 
             .navbar {
                 padding: 0 20px;
@@ -175,16 +251,30 @@
                 display: none;
             }
 
-            .right-side {
-                gap: 20px;
+            .nav-links a {
+                font-size: 14px;
+                padding: 0 14px;
             }
 
-            .nav-links {
-                gap: 15px;
+            .settings {
+                padding-left: 16px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                height: 90px;
             }
 
             .nav-links a {
                 font-size: 12px;
+                padding: 0 8px;
+            }
+
+            .settings {
+                padding-left: 10px;
+                font-size: 23px;
             }
 
             .hero {
@@ -202,7 +292,7 @@
 
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- TOP BAR -->
 
     <header class="navbar">
 
@@ -218,18 +308,38 @@
 
         </div>
 
+
         <div class="right-side">
 
             <nav>
                 <ul class="nav-links">
-                    <li><a href="#">Hangars</a></li>
-                    <li><a href="#">Amenities</a></li>
-                    <li><a href="#">Location</a></li>
-                    <li><a href="#">Contact</a></li>
+
+                    <li>
+                        <a href="#">Our Products</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Our Mission</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Contact Us</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Help</a>
+                    </li>
+
                 </ul>
             </nav>
 
-            <a href="settings.html" class="settings" aria-label="Settings">⚙</a>
+            <a
+                href="settings.html"
+                class="settings"
+                aria-label="Settings"
+            >
+                ⚙
+            </a>
 
         </div>
 
@@ -247,7 +357,7 @@
         <img
             class="hero-image"
             src="https://resources.globalair.com/images/article/phenom-300e-1.jpg"
-            alt="Embraer Phenom 300E flying over the water"
+            alt="Embraer Phenom 300E"
         >
 
     </main>
