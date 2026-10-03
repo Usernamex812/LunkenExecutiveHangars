@@ -18,6 +18,10 @@
             color: black;
         }
 
+        /* =========================
+           TOP NAVIGATION
+        ========================= */
+
         .navbar {
             height: 80px;
             background: white;
@@ -26,7 +30,13 @@
             justify-content: space-between;
             padding: 0 50px;
             border-bottom: 1px solid black;
+            position: relative;
+            z-index: 10;
         }
+
+        /* =========================
+           LOGO
+        ========================= */
 
         .logo {
             display: flex;
@@ -34,6 +44,7 @@
             gap: 12px;
             font-size: 22px;
             font-weight: bold;
+            color: black;
         }
 
         .logo-mark {
@@ -54,6 +65,10 @@
         .logo-mark .e {
             margin-left: 8px;
         }
+
+        /* =========================
+           NAVIGATION
+        ========================= */
 
         .right-side {
             display: flex;
@@ -78,6 +93,10 @@
             opacity: 0.5;
         }
 
+        /* =========================
+           SETTINGS
+        ========================= */
+
         .settings {
             text-decoration: none;
             color: black;
@@ -89,12 +108,27 @@
             opacity: 0.5;
         }
 
+        /* =========================
+           HERO IMAGE
+        ========================= */
+
         .hero {
             height: calc(100vh - 80px);
             background: white;
+            overflow: hidden;
         }
 
-        /* Dark Mode */
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
         body.dark {
             background: #111111;
             color: white;
@@ -103,10 +137,6 @@
         body.dark .navbar {
             background: #111111;
             border-bottom-color: white;
-        }
-
-        body.dark .hero {
-            background: #111111;
         }
 
         body.dark .logo {
@@ -128,9 +158,12 @@
 
 <body>
 
+    <!-- TOP BAR -->
     <header class="navbar">
 
+        <!-- LOGO -->
         <div class="logo">
+
             <div class="logo-mark">
                 <div>L</div>
                 <div class="e">E</div>
@@ -138,9 +171,12 @@
             </div>
 
             <span>Lunken Executive Hangars</span>
+
         </div>
 
+        <!-- RIGHT SIDE -->
         <div class="right-side">
+
             <nav>
                 <ul class="nav-links">
                     <li><a href="#">Hangars</a></li>
@@ -150,13 +186,26 @@
                 </ul>
             </nav>
 
+            <!-- SETTINGS -->
             <a href="settings.html" class="settings" aria-label="Settings">⚙</a>
+
         </div>
 
     </header>
 
-    <main class="hero"></main>
 
+    <!-- MAIN IMAGE -->
+    <main class="hero">
+
+        <img
+            src="https://resources.globalair.com/images/article/phenom-300e-1.jpg?w=800"
+            alt="Embraer Phenom 300E"
+        >
+
+    </main>
+
+
+    <!-- LOAD SAVED DARK MODE -->
     <script>
         if (localStorage.getItem("darkMode") === "true") {
             document.body.classList.add("dark");
@@ -165,4 +214,3 @@
 
 </body>
 </html>
-```
