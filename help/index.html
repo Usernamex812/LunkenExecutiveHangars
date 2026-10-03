@@ -23,13 +23,10 @@
         .navbar {
             height: 105px;
             background: white;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             padding: 0 50px;
-
             border-bottom: 1px solid black;
         }
 
@@ -37,28 +34,22 @@
             display: flex;
             align-items: center;
             gap: 14px;
-
             font-size: 22px;
             font-weight: bold;
             color: black;
-
             text-decoration: none;
         }
 
         .logo-mark {
             width: 48px;
             height: 48px;
-
             background: white;
             color: black;
-
             border: 2px solid black;
-
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
             font-size: 12px;
             font-weight: bold;
             line-height: 12px;
@@ -71,51 +62,35 @@
         .back-button {
             text-decoration: none;
             color: black;
-
             font-size: 38px;
             font-weight: 300;
             line-height: 1;
-
-            transition: opacity 0.2s;
         }
-
-        .back-button:hover {
-            opacity: 0.5;
-        }
-
-        /* MAIN HELP MESSAGE */
 
         .help-message {
             min-height: calc(100vh - 105px);
-
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
             text-align: center;
-
             padding: 60px 30px;
         }
 
         .help-text {
             font-size: clamp(42px, 6vw, 86px);
             font-weight: 900;
-
             line-height: 1.05;
             letter-spacing: -0.025em;
         }
 
         .help-image {
-            width: clamp(180px, 25vw, 330px);
+            width: 300px;
+            max-width: 70vw;
             height: auto;
-
             margin: 35px 0;
-
             display: block;
         }
-
-        /* DARK MODE */
 
         body.dark {
             background: #111111;
@@ -141,10 +116,7 @@
             color: white;
         }
 
-        /* MOBILE */
-
         @media (max-width: 650px) {
-
             .navbar {
                 height: 90px;
                 padding: 0 20px;
@@ -197,7 +169,6 @@
 
     </header>
 
-
     <main class="help-message">
 
         <div class="help-text">
@@ -206,7 +177,7 @@
 
         <img
             class="help-image"
-            src="https://th.bing.com/th/id/R.5e179ed43791bb3b152b723c5910e25b?rik=URncfTRIQRyw3A&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2fLTK%2fzr9%2fLTKzr95yc.jpg&ehk=hV2SG8gbB%2bFRvOtRW1AJZFCAaW2cLu7nngBC3iEDd3c%3d&risl=&pid=ImgRaw&r=0"
+            src="helping-hand.jpg"
             alt="Helping hand"
         >
 
@@ -216,13 +187,10 @@
 
     </main>
 
-
     <script>
-
         if (localStorage.getItem("darkMode") === "true") {
             document.body.classList.add("dark");
         }
-
     </script>
 
 </body>
