@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Settings — Lunken Executive Hangars</title>
 
     <style>
@@ -19,87 +20,174 @@
             min-height: 100vh;
         }
 
+        /* =========================
+           TOP BAR
+        ========================= */
+
         .navbar {
-            height: 80px;
+            height: 105px;
             background: white;
+
             display: flex;
             align-items: center;
+            justify-content: space-between;
+
             padding: 0 50px;
+
             border-bottom: 1px solid black;
         }
 
-        .back {
+        /* =========================
+           LOGO
+        ========================= */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            font-size: 22px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .logo-mark {
+            width: 48px;
+            height: 48px;
+
+            background: white;
+            color: black;
+
+            border: 2px solid black;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+            font-weight: bold;
+            line-height: 12px;
+        }
+
+        .logo-mark .e {
+            margin-left: 9px;
+        }
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-button {
             text-decoration: none;
             color: black;
-            font-size: 15px;
-            font-weight: 600;
+
+            font-size: 38px;
+            font-weight: 300;
+            line-height: 1;
+
+            transition: opacity 0.2s;
         }
 
-        .settings-container {
-            max-width: 800px;
-            margin: 60px auto;
-            padding: 0 30px;
+        .back-button:hover {
+            opacity: 0.5;
         }
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 40px;
+        /* =========================
+           SETTINGS CONTENT
+        ========================= */
+
+        .settings-page {
+            width: 90%;
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 60px 0;
+        }
+
+        .settings-title {
+            font-size: 48px;
+            font-weight: 900;
+
+            margin-bottom: 45px;
         }
 
         .setting {
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             padding: 25px 0;
-            border-bottom: 1px solid #ccc;
+
+            border-bottom: 1px solid #cccccc;
         }
 
         .setting-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 600;
         }
 
-        /* Toggle */
+        /* =========================
+           TOGGLE
+        ========================= */
+
         .switch {
             position: relative;
-            width: 52px;
-            height: 28px;
+
+            width: 54px;
+            height: 30px;
         }
 
         .switch input {
-            display: none;
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
 
         .slider {
             position: absolute;
-            cursor: pointer;
             inset: 0;
-            background: #ccc;
-            border-radius: 28px;
+
+            cursor: pointer;
+
+            background: #cccccc;
+
+            border-radius: 30px;
+
             transition: 0.2s;
         }
 
-        .slider:before {
+        .slider::before {
             content: "";
+
             position: absolute;
+
             width: 22px;
             height: 22px;
-            left: 3px;
-            top: 3px;
+
+            left: 4px;
+            top: 4px;
+
             background: white;
+
             border-radius: 50%;
+
             transition: 0.2s;
         }
 
         input:checked + .slider {
-            background: #222;
+            background: black;
         }
 
-        input:checked + .slider:before {
+        input:checked + .slider::before {
             transform: translateX(24px);
         }
 
-        /* Dark Mode */
+        /* =========================
+           DARK MODE
+        ========================= */
+
         body.dark {
             background: #111111;
             color: white;
@@ -110,54 +198,153 @@
             border-bottom-color: white;
         }
 
-        body.dark .back {
+        body.dark .logo {
+            color: white;
+        }
+
+        body.dark .logo-mark {
+            background: #111111;
+            color: white;
+            border-color: white;
+        }
+
+        body.dark .back-button {
             color: white;
         }
 
         body.dark .setting {
-            border-bottom-color: #444;
+            border-bottom-color: #444444;
+        }
+
+        body.dark .slider {
+            background: #555555;
+        }
+
+        body.dark input:checked + .slider {
+            background: white;
+        }
+
+        body.dark input:checked + .slider::before {
+            background: #111111;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                height: 90px;
+                padding: 0 20px;
+            }
+
+            .logo span {
+                display: none;
+            }
+
+            .settings-page {
+                width: 88%;
+                padding-top: 40px;
+            }
+
+            .settings-title {
+                font-size: 38px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+    <!-- TOP BAR -->
+
     <header class="navbar">
-        <a href="index.html" class="back">← Back</a>
+
+        <div class="logo">
+
+            <div class="logo-mark">
+                <div>L</div>
+                <div class="e">E</div>
+                <div>H</div>
+            </div>
+
+            <span>Lunken Executive Hangars</span>
+
+        </div>
+
+        <!-- BACK TO HOME -->
+
+        <a
+            href="../home/"
+            class="back-button"
+            aria-label="Back to Home"
+        >
+            ←
+        </a>
+
     </header>
 
-    <main class="settings-container">
 
-        <h1>Settings</h1>
+    <!-- SETTINGS -->
+
+    <main class="settings-page">
+
+        <h1 class="settings-title">
+            Settings
+        </h1>
 
         <div class="setting">
-            <span class="setting-name">Dark Mode</span>
+
+            <span class="setting-name">
+                Dark Mode
+            </span>
 
             <label class="switch">
-                <input type="checkbox" id="darkMode">
+
+                <input
+                    type="checkbox"
+                    id="darkModeToggle"
+                >
+
                 <span class="slider"></span>
+
             </label>
+
         </div>
 
     </main>
 
+
+    <!-- DARK MODE SCRIPT -->
+
     <script>
-        const toggle = document.getElementById("darkMode");
+
+        const toggle = document.getElementById("darkModeToggle");
 
         if (localStorage.getItem("darkMode") === "true") {
-            toggle.checked = true;
             document.body.classList.add("dark");
+            toggle.checked = true;
         }
 
         toggle.addEventListener("change", function () {
-            if (this.checked) {
+
+            if (toggle.checked) {
+
                 document.body.classList.add("dark");
+
                 localStorage.setItem("darkMode", "true");
+
             } else {
+
                 document.body.classList.remove("dark");
+
                 localStorage.setItem("darkMode", "false");
+
             }
+
         });
+
     </script>
 
 </body>
