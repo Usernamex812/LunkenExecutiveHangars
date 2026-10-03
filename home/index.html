@@ -1,10 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Help | Lunken Executive Hangars</title>
+<title>Lunken Executive Hangars</title>
 
 <style>
 * {
@@ -16,13 +15,14 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: #fff;
   color: #111;
-  transition: 0.25s;
+  transition: background 0.25s, color 0.25s;
 }
 
 /* HEADER */
 
 header {
   height: 105px;
+  width: 100%;
   display: flex;
   align-items: center;
   padding: 0 32px;
@@ -34,6 +34,7 @@ header {
   display: flex;
   align-items: center;
   gap: 15px;
+  flex-shrink: 0;
 }
 
 /* LEH LOGO */
@@ -80,6 +81,8 @@ header {
   white-space: nowrap;
 }
 
+/* NAV */
+
 nav {
   margin-left: auto;
   display: flex;
@@ -92,6 +95,7 @@ nav a {
   text-decoration: none;
   font-size: 15px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 nav a:hover {
@@ -104,55 +108,37 @@ nav a:hover {
   text-decoration: none !important;
 }
 
-/* HELP */
+/* HERO */
 
-main {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 65px 30px;
+.hero {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 105px);
+  min-height: 500px;
+  overflow: hidden;
 }
 
-h1 {
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
   text-align: center;
-  font-size: 42px;
-  margin: 0 0 45px;
-}
-
-.faq {
-  border-bottom: 1px solid #ccc;
-  padding: 22px 0;
-}
-
-.faq h2 {
-  font-size: 20px;
-  margin: 0 0 10px;
-}
-
-.faq p {
-  margin: 0;
-  line-height: 1.6;
-}
-
-/* RUDE MODE */
-
-#rudeMessage {
-  display: none;
-  min-height: 55vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  font-size: 48px;
+  font-size: clamp(36px, 5vw, 72px);
   font-weight: bold;
-  line-height: 1.25;
-}
-
-body.rude #normalHelp {
-  display: none;
-}
-
-body.rude #rudeMessage {
-  display: flex;
+  letter-spacing: 2px;
+  text-shadow:
+    0 3px 8px rgba(0,0,0,0.8),
+    0 1px 3px rgba(0,0,0,0.9);
+  white-space: nowrap;
 }
 
 /* DARK MODE */
@@ -175,29 +161,26 @@ body.dark nav a {
   color: #eee;
 }
 
-body.dark .faq {
-  border-color: #555;
-}
-
 /* MOBILE */
 
-@media (max-width: 900px) {
+@media (max-width: 850px) {
   header {
     padding: 0 20px;
-  }
-
-  nav {
-    gap: 15px;
   }
 
   .company-name {
     font-size: 16px;
   }
+
+  nav {
+    gap: 15px;
+  }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 700px) {
   header {
     height: auto;
+    min-height: 105px;
     padding: 20px;
     flex-wrap: wrap;
     gap: 20px;
@@ -208,6 +191,15 @@ body.dark .faq {
     margin-left: 0;
     justify-content: center;
     flex-wrap: wrap;
+  }
+
+  .hero {
+    height: calc(100vh - 160px);
+  }
+
+  .hero-title {
+    white-space: normal;
+    width: 90%;
   }
 }
 </style>
@@ -243,64 +235,26 @@ body.dark .faq {
 
 </header>
 
-<main>
+<section class="hero">
 
-  <div id="normalHelp">
+  <img
+    src="https://resources.globalair.com/images/article/phenom-300e-1.jpg"
+    alt="Embraer Phenom 300E"
+  >
 
-    <h1>Help</h1>
-
-    <div class="faq">
-      <h2>What is Lunken Executive Hangars?</h2>
-      <p>
-        Lunken Executive Hangars provides premium aviation hangar
-        facilities and services at Cincinnati Municipal Airport – Lunken Field.
-      </p>
-    </div>
-
-    <div class="faq">
-      <h2>Where are the hangars located?</h2>
-      <p>
-        Our facilities are located at Cincinnati Municipal Airport – Lunken Field.
-      </p>
-    </div>
-
-    <div class="faq">
-      <h2>How can I contact you?</h2>
-      <p>
-        Visit the Contact page for information about getting in touch with us.
-      </p>
-    </div>
-
-    <div class="faq">
-      <h2>Where can I learn more?</h2>
-      <p>
-        Use the navigation above to explore our Products, Mission,
-        Contact, and other pages.
-      </p>
-    </div>
-
+  <div class="hero-title">
+    LUNKEN EXECUTIVE HANGARS
   </div>
 
-  <div id="rudeMessage">
-    <div>The helping hand you seek</div>
-    <div>Is at the end of your arm.</div>
-  </div>
-
-</main>
+</section>
 
 <script>
 const darkMode = localStorage.getItem("darkMode") === "true";
-const rudeMode = localStorage.getItem("rudeMode") === "true";
 
 if (darkMode) {
   document.body.classList.add("dark");
-}
-
-if (rudeMode) {
-  document.body.classList.add("rude");
 }
 </script>
 
 </body>
 </html>
-```
