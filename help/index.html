@@ -38,13 +38,35 @@
       width: 58px;
       height: 58px;
       border: 3px solid #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .logo-l {
+      position: absolute;
+      left: 8px;
+      top: 8px;
       font-size: 25px;
       font-weight: bold;
-      letter-spacing: -7px;
-      padding-right: 7px;
+      line-height: 1;
+    }
+
+    .logo-e {
+      position: absolute;
+      left: 20px;
+      top: 17px;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .logo-h {
+      position: absolute;
+      right: 7px;
+      bottom: 6px;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 1;
     }
 
     .company-name {
@@ -68,6 +90,12 @@
 
     nav a:hover {
       text-decoration: underline;
+    }
+
+    .settings-icon {
+      font-size: 21px;
+      text-decoration: none;
+      line-height: 1;
     }
 
     main {
@@ -214,7 +242,12 @@
 
 <header>
   <div class="brand">
-    <div class="logo">L E H</div>
+    <div class="logo">
+      <span class="logo-l">L</span>
+      <span class="logo-e">E</span>
+      <span class="logo-h">H</span>
+    </div>
+
     <div class="company-name">LUNKEN EXECUTIVE HANGARS</div>
   </div>
 
@@ -224,7 +257,7 @@
     <a href="../mission/">Mission</a>
     <a href="../contact/">Contact</a>
     <a href="../help/">Help</a>
-    <a href="../settings/">Settings</a>
+    <a href="../settings/" class="settings-icon" title="Settings">⚙</a>
     <a href="../account/">Account</a>
   </nav>
 </header>
@@ -241,6 +274,7 @@
           What is Lunken Executive Hangars?
           <span class="plus">+</span>
         </button>
+
         <div class="answer">
           Lunken Executive Hangars provides premium aviation hangar
           facilities and services at Cincinnati Municipal Airport –
@@ -253,6 +287,7 @@
           Where are the hangars located?
           <span class="plus">+</span>
         </button>
+
         <div class="answer">
           Our facilities are located at Cincinnati Municipal Airport –
           Lunken Field.
@@ -264,6 +299,7 @@
           How can I contact Lunken Executive Hangars?
           <span class="plus">+</span>
         </button>
+
         <div class="answer">
           Contact information and additional company information will
           be available through the Contact section of the website.
@@ -275,6 +311,7 @@
           How do I change website settings?
           <span class="plus">+</span>
         </button>
+
         <div class="answer">
           Open the Settings page to change options such as Dark Mode
           and Rude Mode.
@@ -292,47 +329,28 @@
 </main>
 
 <script>
-  // Dark Mode
   if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark-mode");
   }
 
-  // Rude Mode
   const rudeMode =
     localStorage.getItem("rudeMode") === "true";
 
-  const normalHelp =
-    document.getElementById("normalHelp");
-
-  const rudeMessage =
-    document.getElementById("rudeModeMessage");
-
   if (rudeMode) {
-    normalHelp.style.display = "none";
-    rudeMessage.style.display = "flex";
+    document.getElementById("normalHelp").style.display = "none";
+    document.getElementById("rudeModeMessage").style.display = "flex";
   }
 
-  // FAQ accordion
   document.querySelectorAll(".question").forEach(button => {
-
     button.addEventListener("click", () => {
+      const answer = button.nextElementSibling;
+      const plus = button.querySelector(".plus");
 
-      const answer =
-        button.nextElementSibling;
-
-      const plus =
-        button.querySelector(".plus");
-
-      const isOpen =
-        answer.classList.contains("open");
+      const isOpen = answer.classList.contains("open");
 
       answer.classList.toggle("open", !isOpen);
-
-      plus.textContent =
-        isOpen ? "+" : "−";
-
+      plus.textContent = isOpen ? "+" : "−";
     });
-
   });
 </script>
 
