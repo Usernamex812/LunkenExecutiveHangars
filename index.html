@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,22 +15,20 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #17253a;
-            color: white;
+            background: white;
+            color: black;
         }
 
-        /* Top Navigation Bar */
         .navbar {
             height: 80px;
-            background: #17253a;
+            background: white;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 50px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+            border-bottom: 1px solid black;
         }
 
-        /* Logo */
         .logo {
             display: flex;
             align-items: center;
@@ -57,7 +56,12 @@
             margin-left: 8px;
         }
 
-        /* Navigation */
+        .right-side {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
         .nav-links {
             display: flex;
             gap: 35px;
@@ -66,18 +70,59 @@
 
         .nav-links a {
             text-decoration: none;
-            color: white;
+            color: black;
             font-size: 15px;
             font-weight: 600;
         }
 
         .nav-links a:hover {
-            opacity: 0.7;
+            opacity: 0.5;
         }
 
-        /* Main Content */
+        .settings {
+            text-decoration: none;
+            color: black;
+            font-size: 25px;
+            line-height: 1;
+        }
+
+        .settings:hover {
+            opacity: 0.5;
+        }
+
         .hero {
             height: calc(100vh - 80px);
+            background: white;
+        }
+
+        /* Dark Mode */
+        body.dark {
+            background: #111111;
+            color: white;
+        }
+
+        body.dark .navbar {
+            background: #111111;
+            border-bottom-color: white;
+        }
+
+        body.dark .hero {
+            background: #111111;
+        }
+
+        body.dark .logo {
+            color: white;
+        }
+
+        body.dark .logo-mark {
+            background: #111111;
+            color: white;
+            border-color: white;
+        }
+
+        body.dark .nav-links a,
+        body.dark .settings {
+            color: white;
         }
     </style>
 </head>
@@ -96,19 +141,29 @@
             <span>Lunken Executive Hangars</span>
         </div>
 
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Hangars</a></li>
-                <li><a href="#">Amenities</a></li>
-                <li><a href="#">Location</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="right-side">
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Hangars</a></li>
+                    <li><a href="#">Amenities</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+
+            <a href="settings.html" class="settings" aria-label="Settings">⚙</a>
+        </div>
 
     </header>
 
-    <main class="hero">
-    </main>
+    <main class="hero"></main>
+
+    <script>
+        if (localStorage.getItem("darkMode") === "true") {
+            document.body.classList.add("dark");
+        }
+    </script>
 
 </body>
 </html>
+```
