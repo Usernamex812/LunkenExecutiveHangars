@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account | Lunken Executive Hangars</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #111111;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    header {
+      height: 105px;
+      border-bottom: 2px solid #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 45px;
+      background: #fff;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border: 3px solid #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: -7px;
+      padding-right: 7px;
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #111;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      min-height: calc(100vh - 105px);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 70px 20px;
+    }
+
+    .account-card {
+      width: 100%;
+      max-width: 460px;
+      border: 1px solid #d0d0d0;
+      padding: 40px;
+      background: #fff;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+      margin: 18px 0 7px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #bbb;
+      font-size: 16px;
+      border-radius: 3px;
+    }
+
+    input:focus {
+      outline: 2px solid #111;
+      outline-offset: 1px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      border: 0;
+      background: #111;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    .secondary-button {
+      background: transparent;
+      color: #111;
+      border: 1px solid #111;
+    }
+
+    .switch {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 14px;
+    }
+
+    .switch a {
+      color: #111;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .message {
+      margin-top: 20px;
+      padding: 12px;
+      display: none;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .error {
+      background: #ffe5e5;
+      color: #900;
+    }
+
+    .success {
+      background: #e7f7e7;
+      color: #145c14;
+    }
+
+    .profile {
+      display: none;
+    }
+
+    .profile-info {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      margin: 25px 0;
+    }
+
+    .profile-row {
+      margin: 13px 0;
+    }
+
+    .profile-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #777;
+      margin-bottom: 4px;
+    }
+
+    .profile-value {
+      font-size: 17px;
+      word-break: break-word;
+    }
+
+    .account-name {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .account-email {
+      color: #666;
+    }
+
+    .logout {
+      background: #fff;
+      color: #111;
+      border: 1px solid #111;
+    }
+
+    body.dark-mode {
+      background: #111;
+      color: #eee;
+    }
+
+    body.dark-mode header {
+      background: #111;
+      border-color: #eee;
+    }
+
+    body.dark-mode nav a {
+      color: #eee;
+    }
+
+    body.dark-mode .account-card {
+      background: #181818;
+      border-color: #444;
+      box-shadow: none;
+    }
+
+    body.dark-mode .subtitle,
+    body.dark-mode .account-email {
+      color: #aaa;
+    }
+
+    body.dark-mode input {
+      background: #222;
+      color: #eee;
+      border-color: #555;
+    }
+
+    body.dark-mode input:focus {
+      outline-color: #eee;
+    }
+
+    body.dark-mode .secondary-button,
+    body.dark-mode .logout {
+      background: transparent;
+      color: #eee;
+      border-color: #eee;
+    }
+
+    body.dark-mode .profile-info {
+      border-color: #444;
+    }
+
+    body.dark-mode .profile-label {
+      color: #aaa;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 0 20px;
+      }
+
+      .company-name {
+        display: none;
+      }
+
+      nav {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        height: auto;
+        min-height: 85px;
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      main {
+        padding: 35px 15px;
+      }
+
+      .account-card {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">L E H</div>
+    <div class="company-name">LUNKEN EXECUTIVE HANGARS</div>
+  </div>
+
+  <nav>
+    <a href="../home/">Home</a>
+    <a href="../products/">Products</a>
+    <a href="../mission/">Mission</a>
+    <a href="../contact/">Contact</a>
+    <a href="../help/">Help</a>
+    <a href="../settings/">Settings</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- LOGIN / SIGNUP -->
+  <section class="account-card" id="authCard">
+
+    <div id="loginForm">
+      <h1>Sign In</h1>
+      <p class="subtitle">
+        Sign in to your Lunken Executive Hangars account.
+      </p>
+
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" placeholder="you@example.com">
+
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" placeholder="Password">
+
+      <button id="loginButton">Sign In</button>
+
+      <div class="switch">
+        Don't have an account?
+        <a id="showSignup">Create one</a>
+      </div>
+
+      <div class="switch">
+        <a id="forgotPassword">Forgot password?</a>
+      </div>
+    </div>
+
+    <div id="signupForm" style="display:none;">
+      <h1>Create Account</h1>
+      <p class="subtitle">
+        Create your Lunken Executive Hangars account.
+      </p>
+
+      <label for="signupName">Name</label>
+      <input type="text" id="signupName" placeholder="Your name">
+
+      <label for="signupEmail">Email</label>
+      <input type="email" id="signupEmail" placeholder="you@example.com">
+
+      <label for="signupPassword">Password</label>
+      <input type="password" id="signupPassword" placeholder="At least 6 characters">
+
+      <label for="signupPassword2">Confirm Password</label>
+      <input type="password" id="signupPassword2" placeholder="Enter password again">
+
+      <button id="signupButton">Create Account</button>
+
+      <div class="switch">
+        Already have an account?
+        <a id="showLogin">Sign in</a>
+      </div>
+    </div>
+
+    <div id="message" class="message"></div>
+
+  </section>
+
+
+  <!-- PROFILE -->
+  <section class="account-card profile" id="profileCard">
+
+    <h1>Your Account</h1>
+
+    <p class="subtitle">
+      Welcome to Lunken Executive Hangars.
+    </p>
+
+    <div class="profile-info">
+
+      <div class="account-name" id="profileName">
+        Account
+      </div>
+
+      <div class="account-email" id="profileEmail">
+        —
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-label">Account ID</div>
+        <div class="profile-value" id="profileUid">—</div>
+      </div>
+
+      <div class="profile-row">
+        <div class="profile-label">Email Verified</div>
+        <div class="profile-value" id="profileVerified">—</div>
+      </div>
+
+    </div>
+
+    <button class="logout" id="logoutButton">
+      Sign Out
+    </button>
+
+  </section>
+
+</main>
+
+
+<script type="module">
+
+  import { initializeApp } from
+    "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    updateProfile,
+    sendPasswordResetEmail,
+    setPersistence,
+    browserLocalPersistence
+  } from
+    "https://www.gstatic.com/firebasejs/12.3.0/firebase-auth.js";
+
+
+  // ==============================
+  // FIREBASE CONFIG
+  // ==============================
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCt8abKjTmEqHnV5l8Bg-r1VNvAcOXIBjA",
+    authDomain: "lunken-executive-hangars.firebaseapp.com",
+    projectId: "lunken-executive-hangars",
+    storageBucket: "lunken-executive-hangars.firebasestorage.app",
+    messagingSenderId: "67988747495",
+    appId: "1:67988747495:web:dc30947d17261e166ede42",
+    measurementId: "G-WPWZ2GJG35"
+  };
+
+
+  // ==============================
+  // INITIALIZE FIREBASE
+  // ==============================
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+
+  // Remember login
+  await setPersistence(auth, browserLocalPersistence);
+
+
+  // ==============================
+  // ELEMENTS
+  // ==============================
+
+  const authCard = document.getElementById("authCard");
+  const profileCard = document.getElementById("profileCard");
+
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+
+  const message = document.getElementById("message");
+
+
+  // ==============================
+  // MESSAGE
+  // ==============================
+
+  function showMessage(text, type = "error") {
+
+    message.textContent = text;
+    message.className = "message " + type;
+    message.style.display = "block";
+
+  }
+
+
+  function clearMessage() {
+
+    message.style.display = "none";
+
+  }
+
+
+  // ==============================
+  // SWITCH FORMS
+  // ==============================
+
+  document.getElementById("showSignup").addEventListener("click", () => {
+
+    clearMessage();
+
+    loginForm.style.display = "none";
+    signupForm.style.display = "block";
+
+  });
+
+
+  document.getElementById("showLogin").addEventListener("click", () => {
+
+    clearMessage();
+
+    signupForm.style.display = "none";
+    loginForm.style.display = "block";
+
+  });
+
+
+  // ==============================
+  // CREATE ACCOUNT
+  // ==============================
+
+  document.getElementById("signupButton").addEventListener("click", async () => {
+
+    clearMessage();
+
+    const name =
+      document.getElementById("signupName").value.trim();
+
+    const email =
+      document.getElementById("signupEmail").value.trim();
+
+    const password =
+      document.getElementById("signupPassword").value;
+
+    const password2 =
+      document.getElementById("signupPassword2").value;
+
+
+    if (!name || !email || !password || !password2) {
+
+      showMessage("Please fill out every field.");
+      return;
+
+    }
+
+
+    if (password !== password2) {
+
+      showMessage("The passwords do not match.");
+      return;
+
+    }
+
+
+    if (password.length < 6) {
+
+      showMessage("Your password must be at least 6 characters.");
+      return;
+
+    }
+
+
+    try {
+
+      const result =
+        await createUserWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+
+
+      await updateProfile(result.user, {
+        displayName: name
+      });
+
+
+      showMessage(
+        "Your account has been created.",
+        "success"
+      );
+
+    } catch (error) {
+
+      console.error(error);
+
+      if (error.code === "auth/email-already-in-use") {
+
+        showMessage(
+          "An account with that email already exists."
+        );
+
+      } else if (error.code === "auth/invalid-email") {
+
+        showMessage(
+          "Please enter a valid email address."
+        );
+
+      } else if (error.code === "auth/weak-password") {
+
+        showMessage(
+          "That password is too weak."
+        );
+
+      } else {
+
+        showMessage(
+          "Could not create your account. " +
+          error.message
+        );
+
+      }
+
+    }
+
+  });
+
+
+  // ==============================
+  // LOGIN
+  // ==============================
+
+  document.getElementById("loginButton").addEventListener("click", async () => {
+
+    clearMessage();
+
+    const email =
+      document.getElementById("loginEmail").value.trim();
+
+    const password =
+      document.getElementById("loginPassword").value;
+
+
+    if (!email || !password) {
+
+      showMessage("Enter your email and password.");
+      return;
+
+    }
+
+
+    try {
+
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    } catch (error) {
+
+      console.error(error);
+
+      if (
+        error.code === "auth/invalid-credential" ||
+        error.code === "auth/wrong-password" ||
+        error.code === "auth/user-not-found"
+      ) {
+
+        showMessage(
+          "The email or password is incorrect."
+        );
+
+      } else {
+
+        showMessage(
+          "Could not sign you in. " +
+          error.message
+        );
+
+      }
+
+    }
+
+  });
+
+
+  // ==============================
+  // PASSWORD RESET
+  // ==============================
+
+  document.getElementById("forgotPassword").addEventListener("click", async () => {
+
+    clearMessage();
+
+    const email =
+      document.getElementById("loginEmail").value.trim();
+
+
+    if (!email) {
+
+      showMessage(
+        "Enter your email address first, then click Forgot password."
+      );
+
+      return;
+
+    }
+
+
+    try {
+
+      await sendPasswordResetEmail(auth, email);
+
+      showMessage(
+        "Password reset instructions have been sent to your email.",
+        "success"
+      );
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        "We couldn't send the password reset email. " +
+        error.message
+      );
+
+    }
+
+  });
+
+
+  // ==============================
+  // SIGN OUT
+  // ==============================
+
+  document.getElementById("logoutButton").addEventListener("click", async () => {
+
+    try {
+
+      await signOut(auth);
+
+    } catch (error) {
+
+      console.error(error);
+
+      showMessage(
+        "Could not sign out."
+      );
+
+    }
+
+  });
+
+
+  // ==============================
+  // AUTH STATE
+  // ==============================
+
+  onAuthStateChanged(auth, (user) => {
+
+    if (user) {
+
+      authCard.style.display = "none";
+      profileCard.style.display = "block";
+
+
+      document.getElementById("profileName").textContent =
+        user.displayName || "Account";
+
+
+      document.getElementById("profileEmail").textContent =
+        user.email || "No email";
+
+
+      document.getElementById("profileUid").textContent =
+        user.uid;
+
+
+      document.getElementById("profileVerified").textContent =
+        user.emailVerified ? "Yes" : "No";
+
+    } else {
+
+      authCard.style.display = "block";
+      profileCard.style.display = "none";
+
+    }
+
+  });
+
+
+  // ==============================
+  // DARK MODE
+  // ==============================
+
+  function applyDarkMode() {
+
+    const darkMode =
+      localStorage.getItem("darkMode") === "true";
+
+    document.body.classList.toggle(
+      "dark-mode",
+      darkMode
+    );
+
+  }
+
+  applyDarkMode();
+
+</script>
+
+</body>
+</html>
