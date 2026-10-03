@@ -1,392 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Lunken Executive Hangars</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: white;
-            color: black;
-        }
-
-        /* =========================
-           TOP BAR
-        ========================= */
-
-        .navbar {
-            height: 105px;
-            background: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 50px;
-
-            border-bottom: 1px solid black;
-        }
-
-        /* =========================
-           LOGO
-        ========================= */
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-
-            font-size: 22px;
-            font-weight: bold;
-            color: black;
-
-            text-decoration: none;
-        }
-
-        .logo-mark {
-            width: 48px;
-            height: 48px;
-
-            background: white;
-            color: black;
-
-            border: 2px solid black;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 12px;
-            font-weight: bold;
-            line-height: 12px;
-        }
-
-        .logo-mark .e {
-            margin-left: 9px;
-        }
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        .right-side {
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-links {
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-
-            list-style: none;
-        }
-
-        .nav-links li {
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-
-            position: relative;
-        }
-
-        .nav-links li + li::before {
-            content: "";
-
-            position: absolute;
-            left: 0;
-
-            height: 42px;
-            width: 1px;
-
-            background: black;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: black;
-
-            font-size: 18px;
-            font-weight: 600;
-
-            padding: 0 28px;
-
-            white-space: nowrap;
-
-            transition: opacity 0.2s;
-        }
-
-        .nav-links a:hover {
-            opacity: 0.5;
-        }
-
-        /* =========================
-           SETTINGS
-        ========================= */
-
-        .settings {
-            height: 42px;
-
-            display: flex;
-            align-items: center;
-
-            padding-left: 28px;
-
-            border-left: 1px solid black;
-
-            text-decoration: none;
-            color: black;
-
-            font-size: 27px;
-            line-height: 1;
-
-            transition: opacity 0.2s;
-        }
-
-        .settings:hover {
-            opacity: 0.5;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            width: 92%;
-            max-width: 1400px;
-
-            margin: 0 auto;
-
-            padding: 55px 0 60px;
-        }
-
-        .hero-title {
-            width: 100%;
-
-            text-align: center;
-
-            font-size: clamp(28px, 5vw, 72px);
-            font-weight: 900;
-
-            letter-spacing: 0.025em;
-            line-height: 1;
-
-            white-space: nowrap;
-
-            margin-bottom: 35px;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: auto;
-
-            display: block;
-        }
-
-        /* =========================
-           DARK MODE
-        ========================= */
-
-        body.dark {
-            background: #111111;
-            color: white;
-        }
-
-        body.dark .navbar {
-            background: #111111;
-            border-bottom-color: white;
-        }
-
-        body.dark .logo {
-            color: white;
-        }
-
-        body.dark .logo-mark {
-            background: #111111;
-            color: white;
-            border-color: white;
-        }
-
-        body.dark .nav-links a,
-        body.dark .settings {
-            color: white;
-        }
-
-        body.dark .nav-links li + li::before,
-        body.dark .settings {
-            border-color: white;
-        }
-
-        body.dark .hero-title {
-            color: white;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            .navbar {
-                padding: 0 20px;
-            }
-
-            .logo span {
-                display: none;
-            }
-
-            .nav-links a {
-                font-size: 14px;
-                padding: 0 14px;
-            }
-
-            .settings {
-                padding-left: 16px;
-            }
-        }
-
-        @media (max-width: 650px) {
-
-            .navbar {
-                height: 90px;
-            }
-
-            .nav-links a {
-                font-size: 12px;
-                padding: 0 8px;
-            }
-
-            .settings {
-                padding-left: 10px;
-                font-size: 23px;
-            }
-
-            .hero {
-                width: 94%;
-                padding-top: 40px;
-            }
-
-            .hero-title {
-                font-size: clamp(22px, 6vw, 40px);
-                margin-bottom: 25px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lunken Executive Hangars</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #111;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    header {
+      height: 105px;
+      border-bottom: 2px solid #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 45px;
+      background: #fff;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border: 3px solid #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: -7px;
+      padding-right: 7px;
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #111;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      min-height: calc(100vh - 105px);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+        url("https://resources.globalair.com/images/article/phenom-300e-1.jpg");
+      background-size: cover;
+      background-position: center;
+      padding: 40px 20px;
+    }
+
+    .hero-content {
+      color: white;
+      max-width: 1000px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 88px);
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-top: 20px;
+      letter-spacing: 1px;
+    }
+
+    body.dark-mode {
+      background: #111;
+      color: #eee;
+    }
+
+    body.dark-mode header {
+      background: #111;
+      border-color: #eee;
+    }
+
+    body.dark-mode nav a {
+      color: #eee;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 0 20px;
+      }
+
+      .company-name {
+        display: none;
+      }
+
+      nav {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        height: auto;
+        min-height: 85px;
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        min-height: calc(100vh - 120px);
+      }
+
+      .hero h1 {
+        letter-spacing: 1px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- TOP BAR -->
+<header>
+  <div class="brand">
+    <div class="logo">L E H</div>
+    <div class="company-name">LUNKEN EXECUTIVE HANGARS</div>
+  </div>
 
-    <header class="navbar">
+  <nav>
+    <a href="../home/">Home</a>
+    <a href="../products/">Products</a>
+    <a href="../mission/">Mission</a>
+    <a href="../contact/">Contact</a>
+    <a href="../help/">Help</a>
+    <a href="../settings/">Settings</a>
+    <a href="../account/">Account</a>
+  </nav>
+</header>
 
-        <!-- LOGO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>LUNKEN EXECUTIVE HANGARS</h1>
+    <p>Premium aviation facilities at Lunken Airport.</p>
+  </div>
+</section>
 
-        <a href="../home/" class="logo">
+<script>
+  const darkMode = localStorage.getItem("darkMode") === "true";
 
-            <div class="logo-mark">
-                <div>L</div>
-                <div class="e">E</div>
-                <div>H</div>
-            </div>
-
-            <span>Lunken Executive Hangars</span>
-
-        </a>
-
-
-        <!-- NAVIGATION -->
-
-        <div class="right-side">
-
-            <nav>
-
-                <ul class="nav-links">
-
-                    <li>
-                        <a href="../products/">
-                            Our Products
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="../mission/">
-                            Our Mission
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="../contact/">
-                            Contact Us
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="../help/">
-                            Help
-                        </a>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-
-            <!-- SETTINGS -->
-
-            <a
-                href="../settings/"
-                class="settings"
-                aria-label="Settings"
-            >
-                ⚙
-            </a>
-
-        </div>
-
-    </header>
-
-
-    <!-- HERO -->
-
-    <main class="hero">
-
-        <h1 class="hero-title">
-            LUNKEN EXECUTIVE HANGARS
-        </h1>
-
-        <img
-            class="hero-image"
-            src="https://resources.globalair.com/images/article/phenom-300e-1.jpg"
-            alt="Embraer Phenom 300E"
-        >
-
-    </main>
-
-
-    <!-- DARK MODE -->
-
-    <script>
-
-        if (localStorage.getItem("darkMode") === "true") {
-            document.body.classList.add("dark");
-        }
-
-    </script>
+  if (darkMode) {
+    document.body.classList.add("dark-mode");
+  }
+</script>
 
 </body>
 </html>
