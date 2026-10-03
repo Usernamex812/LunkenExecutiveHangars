@@ -1,414 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Settings — Lunken Executive Hangars</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: white;
-            color: black;
-            min-height: 100vh;
-        }
-
-        .navbar {
-            height: 105px;
-            background: white;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 0 50px;
-
-            border-bottom: 1px solid black;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-
-            font-size: 22px;
-            font-weight: bold;
-            color: black;
-            text-decoration: none;
-        }
-
-        .logo-mark {
-            width: 48px;
-            height: 48px;
-
-            background: white;
-            color: black;
-
-            border: 2px solid black;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 12px;
-            font-weight: bold;
-            line-height: 12px;
-        }
-
-        .logo-mark .e {
-            margin-left: 9px;
-        }
-
-        .back-button {
-            text-decoration: none;
-            color: black;
-
-            font-size: 38px;
-            font-weight: 300;
-            line-height: 1;
-
-            transition: opacity 0.2s;
-        }
-
-        .back-button:hover {
-            opacity: 0.5;
-        }
-
-        .settings-page {
-            width: 90%;
-            max-width: 1100px;
-
-            margin: 0 auto;
-
-            padding: 60px 0;
-        }
-
-        .settings-title {
-            font-size: 48px;
-            font-weight: 900;
-
-            margin-bottom: 45px;
-        }
-
-        .setting {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 25px 0;
-
-            border-bottom: 1px solid #cccccc;
-        }
-
-        .setting-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .setting-name {
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .setting-description {
-            font-size: 15px;
-            color: #666666;
-        }
-
-        .switch {
-            position: relative;
-
-            width: 54px;
-            height: 30px;
-
-            flex-shrink: 0;
-            margin-left: 30px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            inset: 0;
-
-            cursor: pointer;
-
-            background: #cccccc;
-
-            border-radius: 30px;
-
-            transition: 0.2s;
-        }
-
-        .slider::before {
-            content: "";
-
-            position: absolute;
-
-            width: 22px;
-            height: 22px;
-
-            left: 4px;
-            top: 4px;
-
-            background: white;
-
-            border-radius: 50%;
-
-            transition: 0.2s;
-        }
-
-        input:checked + .slider {
-            background: black;
-        }
-
-        input:checked + .slider::before {
-            transform: translateX(24px);
-        }
-
-        body.dark {
-            background: #111111;
-            color: white;
-        }
-
-        body.dark .navbar {
-            background: #111111;
-            border-bottom-color: white;
-        }
-
-        body.dark .logo {
-            color: white;
-        }
-
-        body.dark .logo-mark {
-            background: #111111;
-            color: white;
-            border-color: white;
-        }
-
-        body.dark .back-button {
-            color: white;
-        }
-
-        body.dark .setting {
-            border-bottom-color: #444444;
-        }
-
-        body.dark .setting-description {
-            color: #aaaaaa;
-        }
-
-        body.dark .slider {
-            background: #555555;
-        }
-
-        body.dark input:checked + .slider {
-            background: white;
-        }
-
-        body.dark input:checked + .slider::before {
-            background: #111111;
-        }
-
-        @media (max-width: 650px) {
-
-            .navbar {
-                height: 90px;
-                padding: 0 20px;
-            }
-
-            .logo span {
-                display: none;
-            }
-
-            .settings-page {
-                width: 88%;
-                padding-top: 40px;
-            }
-
-            .settings-title {
-                font-size: 38px;
-            }
-
-            .setting-description {
-                max-width: 230px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | Lunken Executive Hangars</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #111;
+      transition: background 0.25s, color 0.25s;
+    }
+
+    header {
+      height: 105px;
+      border-bottom: 2px solid #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 45px;
+      background: #fff;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border: 3px solid #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: -7px;
+      padding-right: 7px;
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: #111;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 70px 25px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin: 0 0 45px;
+    }
+
+    .setting {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 25px 0;
+      border-bottom: 1px solid #ccc;
+      gap: 30px;
+    }
+
+    .setting:first-of-type {
+      border-top: 1px solid #ccc;
+    }
+
+    .setting-info h2 {
+      margin: 0 0 7px;
+      font-size: 20px;
+    }
+
+    .setting-info p {
+      margin: 0;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .toggle {
+      position: relative;
+      width: 58px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      inset: 0;
+      background: #aaa;
+      border-radius: 32px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .slider:before {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      left: 4px;
+      top: 4px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+
+    .toggle input:checked + .slider {
+      background: #111;
+    }
+
+    .toggle input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    body.dark-mode {
+      background: #111;
+      color: #eee;
+    }
+
+    body.dark-mode header {
+      background: #111;
+      border-color: #eee;
+    }
+
+    body.dark-mode nav a {
+      color: #eee;
+    }
+
+    body.dark-mode .setting {
+      border-color: #444;
+    }
+
+    body.dark-mode .setting-info p {
+      color: #aaa;
+    }
+
+    body.dark-mode .toggle input:checked + .slider {
+      background: #eee;
+    }
+
+    body.dark-mode .toggle input:checked + .slider:before {
+      background: #111;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 0 20px;
+      }
+
+      .company-name {
+        display: none;
+      }
+
+      nav {
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      header {
+        height: auto;
+        min-height: 85px;
+        padding: 15px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      main {
+        padding: 45px 20px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .setting {
+        gap: 15px;
+      }
+
+      .setting-info p {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <header class="navbar">
+<header>
+  <div class="brand">
+    <div class="logo">L E H</div>
+    <div class="company-name">LUNKEN EXECUTIVE HANGARS</div>
+  </div>
 
-        <a href="../home/" class="logo">
+  <nav>
+    <a href="../home/">Home</a>
+    <a href="../products/">Products</a>
+    <a href="../mission/">Mission</a>
+    <a href="../contact/">Contact</a>
+    <a href="../help/">Help</a>
+    <a href="../settings/">Settings</a>
+    <a href="../account/">Account</a>
+  </nav>
+</header>
 
-            <div class="logo-mark">
-                <div>L</div>
-                <div class="e">E</div>
-                <div>H</div>
-            </div>
+<main>
 
-            <span>Lunken Executive Hangars</span>
+  <h1>Settings</h1>
 
-        </a>
+  <div class="setting">
 
-        <a
-            href="../home/"
-            class="back-button"
-            aria-label="Back to Home"
-        >
-            ←
-        </a>
+    <div class="setting-info">
+      <h2>Dark Mode</h2>
+      <p>
+        Switch the website between light and dark appearance.
+      </p>
+    </div>
 
-    </header>
+    <label class="toggle">
+      <input type="checkbox" id="darkModeToggle">
+      <span class="slider"></span>
+    </label>
 
+  </div>
 
-    <main class="settings-page">
+  <div class="setting">
 
-        <h1 class="settings-title">
-            Settings
-        </h1>
+    <div class="setting-info">
+      <h2>Rude Mode</h2>
+      <p>
+        Changes the Help page into something a little less helpful.
+      </p>
+    </div>
 
+    <label class="toggle">
+      <input type="checkbox" id="rudeModeToggle">
+      <span class="slider"></span>
+    </label>
 
-        <!-- DARK MODE -->
+  </div>
 
-        <div class="setting">
+</main>
 
-            <div class="setting-info">
+<script>
 
-                <span class="setting-name">
-                    Dark Mode
-                </span>
+  const darkModeToggle =
+    document.getElementById("darkModeToggle");
 
-                <span class="setting-description">
-                    Use a dark appearance across the website.
-                </span>
+  const rudeModeToggle =
+    document.getElementById("rudeModeToggle");
 
-            </div>
 
-            <label class="switch">
+  // Load saved settings
+  const darkMode =
+    localStorage.getItem("darkMode") === "true";
 
-                <input
-                    type="checkbox"
-                    id="darkModeToggle"
-                >
+  const rudeMode =
+    localStorage.getItem("rudeMode") === "true";
 
-                <span class="slider"></span>
 
-            </label>
+  darkModeToggle.checked = darkMode;
+  rudeModeToggle.checked = rudeMode;
 
-        </div>
 
+  if (darkMode) {
+    document.body.classList.add("dark-mode");
+  }
 
-        <!-- RUDE MODE -->
 
-        <div class="setting">
+  // Dark Mode
+  darkModeToggle.addEventListener("change", () => {
 
-            <div class="setting-info">
+    const enabled =
+      darkModeToggle.checked;
 
-                <span class="setting-name">
-                    Rude Mode
-                </span>
+    localStorage.setItem(
+      "darkMode",
+      enabled
+    );
 
-                <span class="setting-description">
-            
-                </span>
+    document.body.classList.toggle(
+      "dark-mode",
+      enabled
+    );
 
-            </div>
+  });
 
-            <label class="switch">
 
-                <input
-                    type="checkbox"
-                    id="rudeModeToggle"
-                >
+  // Rude Mode
+  rudeModeToggle.addEventListener("change", () => {
 
-                <span class="slider"></span>
+    localStorage.setItem(
+      "rudeMode",
+      rudeModeToggle.checked
+    );
 
-            </label>
+  });
 
-        </div>
-
-    </main>
-
-
-    <script>
-
-        const darkModeToggle =
-            document.getElementById("darkModeToggle");
-
-        const rudeModeToggle =
-            document.getElementById("rudeModeToggle");
-
-
-        /* DARK MODE */
-
-        if (localStorage.getItem("darkMode") === "true") {
-
-            document.body.classList.add("dark");
-
-            darkModeToggle.checked = true;
-
-        }
-
-
-        darkModeToggle.addEventListener("change", function() {
-
-            if (darkModeToggle.checked) {
-
-                document.body.classList.add("dark");
-
-                localStorage.setItem("darkMode", "true");
-
-            } else {
-
-                document.body.classList.remove("dark");
-
-                localStorage.setItem("darkMode", "false");
-
-            }
-
-        });
-
-
-        /* RUDE MODE */
-
-        if (localStorage.getItem("rudeMode") === "true") {
-
-            rudeModeToggle.checked = true;
-
-        }
-
-
-        rudeModeToggle.addEventListener("change", function() {
-
-            if (rudeModeToggle.checked) {
-
-                localStorage.setItem("rudeMode", "true");
-
-            } else {
-
-                localStorage.setItem("rudeMode", "false");
-
-            }
-
-        });
-
-    </script>
+</script>
 
 </body>
 </html>
