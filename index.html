@@ -4,26 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lunken Executive Hangars</title>
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: Arial, sans-serif;
-            background: #f5f6f8;
+            background: #17253a;
+            color: white;
         }
+
         /* Top Navigation Bar */
         .navbar {
             height: 80px;
-            background: white;
+            background: #17253a;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 50px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.35);
         }
+
         /* Logo */
         .logo {
             display: flex;
@@ -31,53 +36,66 @@
             gap: 12px;
             font-size: 22px;
             font-weight: bold;
-            color: #17253a;
         }
+
         .logo-mark {
             width: 42px;
             height: 42px;
-            background: #17253a;
+            background: white;
+            color: black;
+            border: 2px solid black;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 11px;
         }
+
+        .logo-mark .e {
+            margin-left: 8px;
+        }
+
         /* Navigation */
         .nav-links {
             display: flex;
             gap: 35px;
             list-style: none;
         }
+
         .nav-links a {
             text-decoration: none;
-            color: #17253a;
+            color: white;
             font-size: 15px;
             font-weight: 600;
         }
+
         .nav-links a:hover {
-            color: #456b91;
+            opacity: 0.7;
         }
+
         /* Main Content */
         .hero {
             height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 52px;
-            color: #17253a;
         }
     </style>
 </head>
+
 <body>
+
     <header class="navbar">
+
         <div class="logo">
-            <div class="logo-mark">LEH</div>
+            <div class="logo-mark">
+                <div>L</div>
+                <div class="e">E</div>
+                <div>H</div>
+            </div>
+
             <span>Lunken Executive Hangars</span>
         </div>
+
         <nav>
             <ul class="nav-links">
                 <li><a href="#">Hangars</a></li>
@@ -86,9 +104,11 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
+
     </header>
+
     <main class="hero">
-        <h1>Welcome</h1>
     </main>
+
 </body>
 </html>
