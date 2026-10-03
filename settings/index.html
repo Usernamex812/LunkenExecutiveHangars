@@ -38,13 +38,35 @@
       width: 58px;
       height: 58px;
       border: 3px solid #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .logo-l {
+      position: absolute;
+      left: 8px;
+      top: 8px;
       font-size: 25px;
       font-weight: bold;
-      letter-spacing: -7px;
-      padding-right: 7px;
+      line-height: 1;
+    }
+
+    .logo-e {
+      position: absolute;
+      left: 20px;
+      top: 17px;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .logo-h {
+      position: absolute;
+      right: 7px;
+      bottom: 6px;
+      font-size: 25px;
+      font-weight: bold;
+      line-height: 1;
     }
 
     .company-name {
@@ -68,6 +90,12 @@
 
     nav a:hover {
       text-decoration: underline;
+    }
+
+    .settings-icon {
+      font-size: 21px;
+      text-decoration: none;
+      line-height: 1;
     }
 
     main {
@@ -217,14 +245,6 @@
       h1 {
         font-size: 38px;
       }
-
-      .setting {
-        gap: 15px;
-      }
-
-      .setting-info p {
-        font-size: 14px;
-      }
     }
   </style>
 </head>
@@ -233,7 +253,12 @@
 
 <header>
   <div class="brand">
-    <div class="logo">L E H</div>
+    <div class="logo">
+      <span class="logo-l">L</span>
+      <span class="logo-e">E</span>
+      <span class="logo-h">H</span>
+    </div>
+
     <div class="company-name">LUNKEN EXECUTIVE HANGARS</div>
   </div>
 
@@ -243,7 +268,7 @@
     <a href="../mission/">Mission</a>
     <a href="../contact/">Contact</a>
     <a href="../help/">Help</a>
-    <a href="../settings/">Settings</a>
+    <a href="../settings/" class="settings-icon" title="Settings">⚙</a>
     <a href="../account/">Account</a>
   </nav>
 </header>
@@ -287,60 +312,42 @@
 </main>
 
 <script>
-
   const darkModeToggle =
     document.getElementById("darkModeToggle");
 
   const rudeModeToggle =
     document.getElementById("rudeModeToggle");
 
-
-  // Load saved settings
   const darkMode =
     localStorage.getItem("darkMode") === "true";
 
   const rudeMode =
     localStorage.getItem("rudeMode") === "true";
 
-
   darkModeToggle.checked = darkMode;
   rudeModeToggle.checked = rudeMode;
-
 
   if (darkMode) {
     document.body.classList.add("dark-mode");
   }
 
-
-  // Dark Mode
   darkModeToggle.addEventListener("change", () => {
+    const enabled = darkModeToggle.checked;
 
-    const enabled =
-      darkModeToggle.checked;
-
-    localStorage.setItem(
-      "darkMode",
-      enabled
-    );
+    localStorage.setItem("darkMode", enabled);
 
     document.body.classList.toggle(
       "dark-mode",
       enabled
     );
-
   });
 
-
-  // Rude Mode
   rudeModeToggle.addEventListener("change", () => {
-
     localStorage.setItem(
       "rudeMode",
       rudeModeToggle.checked
     );
-
   });
-
 </script>
 
 </body>
